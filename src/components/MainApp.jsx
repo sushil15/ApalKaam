@@ -34,7 +34,13 @@ const MainApp=()=>{
         "columnsOrder":["pendingTask","progressTask","completeTask"]
      }
     );
+     
+    const [view,setView]=useState(window.screen.orientation.type=="portrait-primary"?"vertical":"horizontal");
 
+    window.addEventListener('orientationchange',()=>{
+      setView(window.screen.orientation.type==="portrait-primary"?"vertical":"horizontal");
+    })
+    
     useEffect(()=>{
    JSON.parse(localStorage.getItem("taskData"))!==null?
    setTaskData(JSON.parse(localStorage.getItem("taskData"))):
@@ -56,15 +62,14 @@ const MainApp=()=>{
       if(task!==""){
         let tempData=JSON.parse(JSON.stringify(taskData));
         tempData.columns.pendingTask.tasks.push(task);
-        // console.log(tempData);
         localStorage.setItem("taskData",JSON.stringify(tempData));
         setTaskData(tempData);
         notify();
+
       }
     }
 
     const handleDragEnd=(res)=>{
-      console.log(res);
       if(!res.destination){
         return
       }
@@ -76,11 +81,9 @@ const MainApp=()=>{
              let end=res.destination.droppableId; 
              let startInd=res.source.index;
              let endInd=res.destination.index;
-             console.log(start+" "+end+" "+startInd+" "+endInd)
              let tempData=JSON.parse(JSON.stringify(taskData));
              let [ele]=tempData.columns[start].tasks.splice(startInd,1)
              tempData.columns[end].tasks.splice(endInd,0,ele);
-             console.log(tempData);
              localStorage.setItem("taskData",JSON.stringify(tempData));
              setTaskData(tempData);
        }
@@ -92,7 +95,6 @@ const MainApp=()=>{
         tempData.columnsOrder.splice(endInd,0,ele);
 
         localStorage.setItem("taskData",JSON.stringify(tempData));
-        console.log(tempData);
         setTaskData(tempData);
 
       }
@@ -139,8 +141,8 @@ const MainApp=()=>{
               <TaskCreate getPendingTask={getPendingTask}/>
             </div>
                <DragDropContext onDragEnd={(res)=>handleDragEnd(res)}>
-               <Droppable droppableId={"droppable1"} type={"column_swap"} direction={"horizontal"}>
-                { 
+               <Droppable droppableId={"droppable1"} type={"column_swap"} direction={view}>
+                {
                (provided)=>(
                <div ref={provided.innerRef} {...provided.droppableProps} className="row d-flex justify-content-center my-auto allTaskRow">
                 {
@@ -182,7 +184,7 @@ const MainApp=()=>{
               <div className="row my-auto">
                  <CreateTaskModal showModal={showModal} isShowModal={isShowModal} getPendingTask={getPendingTask}/>
               </div>
-              <div className="row footer_row mt-auto">
+              <div className="row footer_row mt-auto ">
                <Footer/>
               </div>
         </div>

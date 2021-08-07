@@ -23,7 +23,6 @@ const Header=(props)=>{
 
     return(
        <div className="col-12 header">
-          {console.log("hii")}
           <div className="row">
              <div className="col-8">
              <p>ApalKaam</p> 
