@@ -7,7 +7,6 @@ const CreateTaskModal=(props)=>{
     return(
     // <Modal.Dialog>
     <Modal show={props.isShowModal} onHide={()=>props.showModal(false)} size="lg">
-     
         <Modal.Body>
          <TaskCreate getPendingTask={props.getPendingTask}/>
         </Modal.Body>
