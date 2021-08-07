@@ -42,12 +42,13 @@ const MainApp=()=>{
     })
     
     useEffect(()=>{
+    notify("For better experience use in landscape mode");
    JSON.parse(localStorage.getItem("taskData"))!==null?
    setTaskData(JSON.parse(localStorage.getItem("taskData"))):
    setTaskData(taskData);
     },[])
 
-    const notify = () => toast.success(<h5 style={{fontFamily:"cursive"}}>New task added</h5>, {
+    const notify = (msg) => toast.success(<h5 style={{fontFamily:"cursive"}}>{msg}</h5>, {
       position: "top-center",
       autoClose: 3000,
       hideProgressBar: false,
@@ -64,7 +65,7 @@ const MainApp=()=>{
         tempData.columns.pendingTask.tasks.push(task);
         localStorage.setItem("taskData",JSON.stringify(tempData));
         setTaskData(tempData);
-        notify();
+        notify("New task added");
 
       }
     }
@@ -141,6 +142,7 @@ const MainApp=()=>{
               <TaskCreate getPendingTask={getPendingTask}/>
             </div>
                <DragDropContext onDragEnd={(res)=>handleDragEnd(res)}>
+
                <Droppable droppableId={"droppable1"} type={"column_swap"} direction={view}>
                 {
                (provided)=>(
