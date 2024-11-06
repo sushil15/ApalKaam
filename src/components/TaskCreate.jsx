@@ -7,16 +7,18 @@ const TaskCreate=(props)=>{
 
   const getTask=(e)=>{
    setCreateTask(e.target.value);
-   
  }
     return(
        <div className="col-4 taskCreate_div mx-auto mt-3">
          <div className="row mx-auto ">
              <div className="col-12 input_div">
-              <textarea className="input_textarea text-center"  value={createTask} onChange={getTask}  placeholder={"Create your task"}></textarea>
+              <textarea className="input_textarea text-center"  value={createTask} onChange={getTask}  placeholder={"Create your task"} rows="4" cols="50"></textarea>
              </div>
              <div className="col-12 d-flex justify-content-end p-2 addBtn" >
-              <i className="fas fa-plus-square" onClick={()=>props.getPendingTask(createTask)}></i>
+              <i className="fas fa-plus-square" onClick={()=> {
+                setCreateTask('')
+                props.getPendingTask(createTask)
+                }}></i>
              </div>
          </div>
        </div>

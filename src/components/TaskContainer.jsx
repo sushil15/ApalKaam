@@ -15,7 +15,13 @@ return(
 {
  data.tasks.map((task,ind)=>{
   return(
-      <Task task={task} key={ind} ind={ind} name={data.id} deleteTask={(columnName,taskInd)=>props.deleteTask(columnName,taskInd)}/>
+      <Task
+        task={task}
+        key={ind}
+        ind={ind}
+        name={data.id}
+        deleteTask={(columnName,taskInd) => props.deleteTask(columnName,taskInd)}
+      />
      )
   })
 }

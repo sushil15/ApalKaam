@@ -9,7 +9,7 @@ const Header=(props)=>{
      let modeVal=localStorage.getItem("darkMode")==="true"?true:false;
      toggleMode(modeVal);
     },[])
-   
+
     const toggleMode=(modeType)=>{
       if(modeType){
        document.body.classList.add("darkMode");
@@ -17,8 +17,10 @@ const Header=(props)=>{
       else{
          document.body.classList.remove("darkMode");
       }
-      modeType===true?localStorage.setItem("darkMode","true"):localStorage.setItem("darkMode","false");
-      setMode(modeType);    
+      modeType === true ?
+         localStorage.setItem("darkMode","true") :
+         localStorage.setItem("darkMode","false");
+      setMode(modeType);
    }
 
     return(
@@ -29,11 +31,11 @@ const Header=(props)=>{
              </div>
              <div className="col-4 py-1 d-flex justify-content-center">
                <div className="row">
-                 <div className="createTaskModalBtn mx-2   d-lg-none d-flex">
+                 <div className="createTaskModalBtn mx-2 d-lg-none d-flex">
                    <i className="fas fa-plus-square" onClick={()=>props.showModal(true)}></i>
                   </div>
                   <div className="toggle_mode mx-2">
-                   <i onClick={()=>toggleMode(!darkMode)} className={darkMode?"far fa-sun":"far fa-moon"}></i>
+                   <i onClick={()=>toggleMode(!darkMode)} className={darkMode ? "far fa-sun" : "far fa-moon"}></i>
                   </div>
                </div>
              </div>

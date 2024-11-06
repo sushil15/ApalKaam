@@ -10,14 +10,14 @@
     --dark-task-bg:#031333;
     --dark-modal-bg:#101232;
 
-    --light-body-bg: #D3D7DE;
-    --light-taskCreate_div:#FFFDFD;
+    --light-body-bg: #fff;
+    --light-taskCreate_div:#fff;
     --light-text-color:#000;
-    --light-taskColumn-bg:#DBE0E6;
-    --light-task-bg:#F5F5F5;
+    --light-taskColumn-bg:#fff;
+    --light-task-bg:#fff;
     --light-modal-bg:#101232;
     --light-btn-color:#031333;
-    --light-taskColumnHeader-bg:#DBE0E6;
+    --light-taskColumnHeader-bg:#fff;
 
     --header-bg:#031333;
     --taskColumnheader1-bg:#4B88CA;
@@ -112,6 +112,7 @@ height:80px;
     width:100%;
     min-height:50px;
     background-color:var(--light-task-bg);
+    box-shadow: 0px 0px 22px 0px rgba(0,0,0,0.1);
     margin:5px 5px;
     border-radius:5px;
     border-left:2px solid#FC427B;
