@@ -37,13 +37,7 @@ https://apalkaam.herokuapp.com/
 Command to install required packages
 
 ```bash
-  npm install react-beutiful-dnd
-```
-```bash
-  npm install bootstrap
-```
-```bash
-  npm install react-toastify
+  npm install
 ```
     
 ## Run Locally
