@@ -23,3 +23,8 @@ export const notify = (msg, type) => {
     }
     return toastMsg
 }
+
+export const getOrientation = () => {
+    let orientation = window.screen.orientation.type
+    return orientation === "portrait-primary" ? "vertical" : "horizontal"
+  }
